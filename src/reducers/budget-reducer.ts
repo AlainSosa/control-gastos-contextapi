@@ -1,8 +1,10 @@
 export type BudgetActions = { type: "add-budget"; payload: { budget: number } };
 
-export type BudgetState = {
-  budget: number;
-};
+export type BudgetState =
+  | {
+      budget: number;
+    }
+  | undefined;
 
 export const initialState: BudgetState = {
   budget: 0,

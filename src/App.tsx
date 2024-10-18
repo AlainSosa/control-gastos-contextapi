@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import BudgetForm from "./components/BudgetForm";
 import { useBudget } from "./hooks/useBudget";
 import BudgetTracker from "./components/BudgetTracker";
+import ExpenseModal from "./components/ExpenseModal";
 
 function App() {
   const { state } = useBudget();
@@ -15,10 +16,16 @@ function App() {
           Planificador de Gastos
         </h1>
       </header>
-
       <div className="max-w-3xl mx-auto bg-white shadow-lg rounded-lg mt-10 p-10">
         {isValidBudget ? <BudgetTracker /> : <BudgetForm />}
       </div>
+      {/* //este && es como un ternario pero solo cuando se evalua com tru esta
+      condicion isValidBudget */}
+      {isValidBudget && (
+        <main className="mas-w-3xl mx-auto py-10">
+          <ExpenseModal />
+        </main>
+      )}
     </>
   );
 }

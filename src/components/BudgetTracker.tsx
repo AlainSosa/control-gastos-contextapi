@@ -5,12 +5,12 @@ import AmountDisplay from "./AmountDisplay";
 import "react-circular-progressbar/dist/styles.css";
 
 export default function BudgetTracker() {
-  const { state, totalExpenses, remainingBudget } = useBudget();
+  const { state, totalExpenses, remainingBudget, dispatch } = useBudget();
 
   const percentage = +((totalExpenses / state.budget) * 100).toFixed(2); //este codigo lo redondea solo para dos decimales;
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-5 ">
       <div className="flex justify-center">
         <CircularProgressbar
           value={percentage}
@@ -27,6 +27,7 @@ export default function BudgetTracker() {
         <button
           type="button"
           className="bg-pink-600 w-full; p-2 text-white uppercase font-bold rounded-lg"
+          onClick={() => dispatch({ type: "reset-app" })}
         >
           Resetear App
         </button>
